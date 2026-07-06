@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link"; // We added this!
 import { Zap, TrendingUp, BarChart3, Activity } from "lucide-react";
 
 export default function IntelligenceDashboard() {
@@ -12,7 +13,6 @@ export default function IntelligenceDashboard() {
 
   return (
     <div className="min-h-screen bg-[#05070f] text-white p-6">
-      {/* Terminal Header */}
       <div className="mb-8 flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-3">
@@ -27,7 +27,6 @@ export default function IntelligenceDashboard() {
         </div>
       </div>
 
-      {/* Analytics Grid */}
       <div className="grid lg:grid-cols-4 gap-6 mb-8">
         {[ {title: "AI Market Bias", val: "Bullish", icon: TrendingUp}, {title: "Smart Money Activity", val: "High", icon: Zap}, {title: "Rug Pull Risk", val: "Minimal", icon: Activity}, {title: "Total Analyzed", val: "1.2M", icon: BarChart3} ].map((stat, i) => (
           <div key={i} className="border border-white/10 bg-white/5 p-6 rounded-2xl">
@@ -40,7 +39,6 @@ export default function IntelligenceDashboard() {
         ))}
       </div>
 
-      {/* Main Signal Feed */}
       <div className="border border-white/10 rounded-2xl bg-black/40 overflow-hidden">
         <table className="w-full text-left text-sm">
           <thead className="bg-white/5 text-slate-400 uppercase text-xs">
@@ -64,7 +62,10 @@ export default function IntelligenceDashboard() {
                 <td className="p-4 font-bold text-emerald-400">{t.aiScore}/100</td>
                 <td className="p-4 text-orange-400">{t.risk}</td>
                 <td className="p-4 text-right">
-                  <button className="bg-white/10 hover:bg-white/20 px-4 py-2 rounded-lg transition-all">Details</button>
+                  {/* THIS IS THE CHANGE: Using Link component now */}
+                  <Link href="/signals" className="inline-block bg-emerald-500 text-black px-4 py-2 rounded-lg font-bold hover:bg-emerald-400 transition-all">
+                    Details
+                  </Link>
                 </td>
               </tr>
             ))}
