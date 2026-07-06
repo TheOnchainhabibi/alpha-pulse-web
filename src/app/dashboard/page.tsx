@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
-import { Shield, Zap, TrendingUp, BarChart3, AlertCircle, Activity } from "lucide-react";
+import { Zap, TrendingUp, BarChart3, Activity } from "lucide-react";
 
 export default function IntelligenceDashboard() {
   const [network, setNetwork] = useState("Solana");
   
-  // This structure mimics a high-end trading terminal
   const tokens = [
     { name: "PUMP AI", symbol: "PUMP", price: "0.023", mcap: "1.2M", aiScore: 98, risk: "Low", liquidity: "500K", signal: "Strong Buy" },
     { name: "NEIRO SOL", symbol: "NEIRO", price: "0.004", mcap: "800K", aiScore: 82, risk: "Med", liquidity: "120K", signal: "Watch" },
@@ -30,7 +29,7 @@ export default function IntelligenceDashboard() {
 
       {/* Analytics Grid */}
       <div className="grid lg:grid-cols-4 gap-6 mb-8">
-        {[ {title: "AI Market Bias", val: "Bullish", icon: TrendingUp}, {title: "Smart Money Activity", val: "High", icon: Zap}, {title: "Rug Pull Risk", val: "Minimal", icon: Shield}, {title: "Total Analyzed", val: "1.2M", icon: BarChart3} ].map((stat, i) => (
+        {[ {title: "AI Market Bias", val: "Bullish", icon: TrendingUp}, {title: "Smart Money Activity", val: "High", icon: Zap}, {title: "Rug Pull Risk", val: "Minimal", icon: Activity}, {title: "Total Analyzed", val: "1.2M", icon: BarChart3} ].map((stat, i) => (
           <div key={i} className="border border-white/10 bg-white/5 p-6 rounded-2xl">
             <div className="flex justify-between items-start mb-4">
               <span className="text-slate-400 text-sm">{stat.title}</span>
@@ -61,7 +60,7 @@ export default function IntelligenceDashboard() {
                 <td className="p-4 font-bold">{t.name} ({t.symbol})</td>
                 <td className="p-4 font-mono">${t.price}</td>
                 <td className="p-4 font-mono">{t.mcap}</td>
-                <td className="p-4 font-mono">{t.liq}</td>
+                <td className="p-4 font-mono">{t.liquidity}</td>
                 <td className="p-4 font-bold text-emerald-400">{t.aiScore}/100</td>
                 <td className="p-4 text-orange-400">{t.risk}</td>
                 <td className="p-4 text-right">
